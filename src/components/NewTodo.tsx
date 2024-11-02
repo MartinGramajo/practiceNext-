@@ -7,6 +7,7 @@ import * as todosApi from '@/todos/helpers/todos';
 
 
 
+
 export const NewTodo = () => { 
 
     const [title, setTitle] = useState('');
@@ -26,11 +27,12 @@ export const NewTodo = () => {
         router.refresh();
     }
 
-    // const refreshCompleted = async (e: FormEvent)=>{
-    //     e.preventDefault();
-    //     await todosApi.refreshTodo();
-    //     router.refresh();
-    // }
+    const refreshCompleted = async (e: FormEvent)=>{
+      e.preventDefault();
+      await todosApi.refreshTodo();
+      router.refresh();
+  }
+
 
   return (
     <form onSubmit={onSubmit}  className='flex w-full'>
@@ -48,7 +50,7 @@ export const NewTodo = () => {
       
       <span className='flex flex-1'></span>
       <button 
-        // onClick={ refreshCompleted }
+        onClick={ refreshCompleted }
         type='button' className="flex items-center justify-center rounded ml-2 bg-green-600 p-2 text-white hover:bg-green-800 transition-all">
         <IoAddCircle />
         <span className="ml-2 text-text-sm">Recuperar completados</span>

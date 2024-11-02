@@ -58,7 +58,7 @@ export const refreshTodo = async (): Promise<Todo> => {
 
 
   // 1. Hacemos la petición HTTP con el método PUT
-  const todo = await fetch(`/api/todos`, {
+  const todo = await fetch(`/api/seed`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
