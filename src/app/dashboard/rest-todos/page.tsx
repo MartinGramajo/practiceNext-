@@ -1,9 +1,23 @@
+import prisma from "@/lib/prisma";
+import TodosGrid from "@/todos/components/TodosGrid";
 
 
-export default function NamePage() {
+export const metadata = {
+  title: "Listado de Todos",
+  description: "SEO Title",
+};
+
+export default async function RestTodoPage() {
+
+  // Traemos los TODO utilizando prisma 
+
+  const todos = await prisma.todo.findMany({
+    orderBy: { title: "asc" },
+  });
+
   return (
     <div>
-      <h1>Hello Page</h1>
+        <TodosGrid todos={todos} />
     </div>
   );
 }
