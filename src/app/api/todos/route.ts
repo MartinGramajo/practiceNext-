@@ -27,3 +27,15 @@ export async function GET(request: Request) {
 
   return NextResponse.json(todos);
 }
+
+
+
+export async function POST(request: Request) {
+  // al tratarse de un metodo de creacion tenemos que trabajar con el body 
+
+  const body = await request.json();
+
+  const todo = await prisma.todo.create({ data: body });
+
+  return NextResponse.json(todo);
+}
